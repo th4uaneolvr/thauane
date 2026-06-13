@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia e Produtividade para o Agronegócio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de Acessibilidade">
+        <div class="container accessibility-container">
+            <button id="btn-contrast" class="access-btn" aria-label="Alternar Alto Contraste">Contraste</button>
+            <div class="font-controls">
+                <button id="btn-font-decrease" class="access-btn" aria-label="Diminuir Fonte">A-</button>
+                <button id="btn-font-increase" class="access-btn" aria-label="Aumentar Fonte">A+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">Agro<strong>Precision</strong></div>
+            <nav class="main-nav">
+                <a href="#solucoes">Soluções</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#depoimentos">Resultados</a>
+                <a href="#faq">Dúvidas</a>
+            </nav>
+            <a href="#cta-form" class="btn btn-primary-header">Falar com Consultor</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Proteção inteligente que multiplica a sua **produtividade**</h1>
+                <p>Aplicação precisa de defensivos agrícolas para blindar sua lavoura contra pragas, garantir a segurança alimentar e maximizar a lucratividade por hectare.</p>
+                <div class="hero-actions">
+                    <a href="#cta-form" class="btn btn-primary">Otimizar Minha Lavoura</a>
+                    <a href="#solucoes" class="btn btn-secondary">Conhecer as Soluções</a>
+                </div>
+            </div>
+            <div class="hero-image-placeholder">
+                <!-- Espaço estratégico para imagem de alta conversão de lavoura protegida -->
+                <div class="badge-hero">Até 35% mais eficiência</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Por que o Manejo Químico Correto é Vital?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Proteção de Ativos</h3>
+                    <p>Eliminação cirúrgica de pragas, plantas daninhas e doenças que destroem até 40% do potencial produtivo de uma plantação sem manejo.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Segurança Alimentar</h3>
+                    <p>Uso regulamentado e técnico para combater micotoxinas e fungos nocivos à saúde humana, entregando alimentos saudáveis ao mercado.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Sustentabilidade Econômica</h3>
+                    <p>Redução drástica do uso de terra e recursos hídricos através do aumento exponencial da produtividade na mesma área plantada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluções Dinâmicas (Carrossel via JS) -->
+    <section id="solucoes" class="solutions-section">
+        <div class="container">
+            <h2 class="section-title">Nossas Linhas de Defesa</h2>
+            <div class="carousel-container">
+                <div id="carousel-track" class="carousel-track">
+                    <!-- Inserido dinamicamente pelo JavaScript -->
+                </div>
+                <div class="carousel-controls">
+                    <button id="carousel-prev" class="carousel-btn" aria-label="Slide Anterior">❮</button>
+                    <button id="carousel-next" class="carousel-btn" aria-label="Próximo Slide">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prova Social / Depoimentos -->
+    <section id="depoimentos" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Resultados Reais no Campo</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Reduzimos a incidência de ferrugem asiática a quase zero na última safra. O suporte técnico na escolha dos defensivos foi o diferencial."</p>
+                    <p class="testimonial-author"><strong>Ricardo Antunes</strong> - Produtor de Soja (MT)</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Produtividade subiu de 62 para 78 sacas por hectare. Defensivos aplicados na dose certa e no momento correto salvaram nossa lavoura de milho."</p>
+                    <p class="testimonial-author"><strong>Mariana Schmidt</strong> - Engenheira Agrônoma (PR)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (Acordeão Dinâmico via JS) -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div id="faq-accordion" class="accordion-container">
+                <!-- Inserido dinamicamente pelo JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Form -->
+    <section id="cta-form" class="cta-section">
+        <div class="container cta-container">
+            <div class="cta-text">
+                <h2>Pronto para maximizar o rendimento da sua safra?</h2>
+                <p>Fale agora mesmo com um de nossos engenheiros agrônomos especialistas e receba um plano de manejo personalizado para a sua propriedade.</p>
+            </div>
+            <div class="cta-card-form">
+                <form id="lead-form" onsubmit="event.preventDefault(); alert('Solicitação enviada com sucesso! Nossa equipe entrará em contato.');">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" required placeholder="Ex: João Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail Profissional</label>
+                        <input type="email" id="email" required placeholder="Ex: joao@agro.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="hectares">Tamanho da Propriedade (Hectares)</label>
+                        <input type="number" id="hectares" required placeholder="Ex: 500">
+                    </div>
+                    <button type="submit" class="btn btn-submit">Solicitar Diagnóstico Gratuito</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 AgroPrecision. Todos os direitos reservados. Uso consciente e responsável de defensivos agrícolas.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

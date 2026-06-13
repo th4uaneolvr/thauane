@@ -1,0 +1,142 @@
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- ACESSIBILIDADE: CONTROLE DE FONTE ---
+    let currentFontSize = 16;
+    const rootHtml = document.documentElement;
+    const btnIncrease = document.getElementById('btn-increase');
+    const btnDecrease = document.getElementById('btn-decrease');
+
+    if(btnIncrease && btnDecrease) {
+        btnIncrease.addEventListener('click', () => {
+            if (currentFontSize < 24) {
+                currentFontSize += 2;
+                rootHtml.style.fontSize = currentFontSize + 'px';
+            }
+        });
+
+        btnDecrease.addEventListener('click', () => {
+            if (currentFontSize > 12) {
+                currentFontSize -= 2;
+                rootHtml.style.fontSize = currentFontSize + 'px';
+            }
+        });
+    }
+
+    // --- ACESSIBILIDADE: ALTO CONTRASTE ---
+    const btnContrast = document.getElementById('btn-contrast');
+    if(btnContrast) {
+        btnContrast.addEventListener('click', () => {
+            document.body.classList.toggle('high-contrast');
+        });
+    }
+
+    // --- COMPONENTE: CARROSSEL (SOLUÇÕES) ---
+    const solucoesDados = [
+        {
+            titulo: "Herbicidas de Alta Performance",
+            descricao: "Controle definitivo de plantas daninhas de folha larga e estreita, impedindo a matocompetição e assegurando o pleno desenvolvimento do cultivo principal."
+        },
+        {
+            titulo: "Inseticidas Tecnológicos",
+            descricao: "Ação de choque e efeito residual prolongado contra complexos de lagartas, percevejos e cigarrinhas. Proteção integral da raiz às folhas."
+        },
+        {
+            titulo: "Fungicidas Protetores e Sistêmicos",
+            descricao: "Prevenção e cura contra ferrugens, manchas foliares e antracnose. Manutenção da área foliar verde por muito mais tempo."
+        }
+    ];
+
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    let currentIndex = 0;
+
+    if (track) {
+        solucoesDados.forEach(item => {
+            const slide = document.createElement('div');
+            slide.classList.add('carousel-item');
+            slide.innerHTML = `
+                <h3>${item.titulo}</h3>
+                <p>${item.descricao}</p>
+            `;
+            track.appendChild(slide);
+        });
+
+        const updateCarousel = () => {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        };
+
+        if(nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % solucoesDados.length;
+                updateCarousel();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + solucoesDados.length) % solucoesDados.length;
+                updateCarousel();
+            });
+        }
+    }
+
+    // --- COMPONENTE: ACORDEÃO (FAQ) ---
+    const faqDados = [
+        {
+            pergunta: "Qual a real importância dos agrotóxicos no agronegócio moderno?",
+            resposta: "Eles são essenciais para garantir a escala global de produção de alimentos. Sem os defensivos, pragas e doenças dizimariam lavouras inteiras, causando escassez de comida, inflação severa nos preços dos alimentos e necessidade de desmatar novas áreas florestais para compensar a perda de produtividade."
+        },
+        {
+            pergunta: "Como garantir que a aplicação seja segura para o meio ambiente?",
+            resposta: "Através da tecnologia de aplicação, calibração exata de maquinários, respeito às condições climáticas e uso de Equipamentos de Proteção Individual (EPI). O manejo integrado e técnico evita a deriva e otimiza o uso do produto."
+        },
+        {
+            pergunta: "Os defensivos aumentam o lucro do produtor?",
+            resposta: "Sim. O investimento em defensivos agrícolas retorna diretamente em maior número de sacas colhidas por hectare, protegendo o teto produtivo da semente e evitando prejuízos catastróficos."
+        }
+    ];
+
+    const accordionContainer = document.getElementById('faq-accordion');
+
+    if (accordionContainer) {
+        faqDados.forEach((item, index) => {
+            const accordionItem = document.createElement('div');
+            accordionItem.classList.add('accordion-item');
+
+            accordionItem.innerHTML = `
+                <button class="accordion-header" aria-expanded="false" aria-controls="faq-answer-${index}">
+                    ${item.pergunta}
+                    <span class="accordion-icon">+</span>
+                </button>
+                <div id="faq-answer-${index}" class="accordion-content">
+                    <p>${item.resposta}</p>
+                </div>
+            `;
+
+            accordionContainer.appendChild(accordionItem);
+
+            const header = accordionItem.querySelector('.accordion-header');
+            const content = accordionItem.querySelector('.accordion-content');
+            const icon = accordionItem.querySelector('.accordion-icon');
+
+            header.addEventListener('click', () => {
+                const isOpen = accordionItem.classList.contains('active');
+                
+                // Fecha todos antes de abrir o atual
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.accordion-content').style.maxHeight = null;
+                    i.querySelector('.accordion-icon').textContent = '+';
+                    i.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                });
+
+                if (!isOpen) {
+                    accordionItem.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.textContent = '−';
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
+});
